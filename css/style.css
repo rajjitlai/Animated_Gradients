@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(45deg, #1a1a1a, #0d0d0d); /* Darker base for better contrast */
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 50%, rgba(64, 93, 230, 0.1), transparent), 
+                rgba(0, 0, 0, 0.85);
+    z-index: 1;
+}
+
+.hero-section {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 5%;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
+    position: relative;
+}
+
+.text-content {
+    flex: 1;
+    text-align: left;
+    max-width: 700px;
+}
+
+.text-content h1 {
+    font-size: 6rem; /* Significantly increased text size */
+    font-weight: 800;
+    line-height: 1.1;
+    background-image: linear-gradient(to right, #00f260, #def700, #0575e6, #64f38c);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 300%;
+    background-position: -100%;
+    animation: text-animation 8s infinite alternate-reverse;
+    margin-bottom: 40px;
+}
+
+.visual-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blob {
+    width: 500px;
+    height: 500px;
+    background: #ffffff;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; /* Liquid shape */
+    filter: blur(5px); /* Very soft blur for a clean edge */
+    animation: morphBlob 10s infinite alternate ease-in-out;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 0 80px rgba(255, 255, 255, 0.3);
+}
+
+.github-link {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px 35px;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.github-link:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: scale(1.05);
+}
+
+@keyframes text-animation {
+    to {
+        background-position: 100%;
+    }
+}
+
+@keyframes morphBlob {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: scale(1.1) rotate(5deg);
+    }
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: scale(1) rotate(-5deg);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+    }
+    .text-content {
+        text-align: center;
+    }
+    .text-content h1 {
+        font-size: 3.5rem;
+    }
+    .blob {
+        width: 300px;
+        height: 300px;
+    }
+}
